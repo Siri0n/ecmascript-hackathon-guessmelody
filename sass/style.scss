@@ -1,0 +1,21 @@
+// Общие стили
+@import "normalize";
+@import "scaffolding";
+
+// Стили основных блоков
+@import "blocks/footer";
+@import "blocks/logo";
+
+// Стили игровых блоков
+@import "blocks/welcome";
+@import "blocks/button";
+@import "blocks/game";
+@import "blocks/timer";
+@import "blocks/track";
+@import "blocks/artist";
+@import "blocks/result";
+@import "blocks/result-artist";
+@import "blocks/result-list";
+@import "blocks/result-genre";
+@import "blocks/modal";
+@import "blocks/mistake";

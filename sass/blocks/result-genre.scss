@@ -1,0 +1,52 @@
+/*
+ * Стили для экрана с результатами игры на выбор жанра
+ */
+
+// Переопределяю стили для текстовых блоков
+.result--genre {
+  .result__title {
+    margin-bottom: 10px;
+    margin-top: 230px;
+    width: 200px;
+  }
+
+  .result__text {
+    margin: 0;
+  }
+
+  .result__total {
+    margin: 0;
+  }
+}
+
+// Пишу стили для блоков с правильными и ошибочными ответами
+.result__correct {
+  display: flex;
+  margin-top: 40px;
+}
+
+.correct {
+  width: 35px;
+  height: 49px;
+
+  background-image: url("../img/sprite.png");
+  background-position: -5px -64px;
+}
+
+.result__wrong {
+  display: flex;
+  margin-top: 60px;
+}
+
+.wrong {
+  width: 35px;
+  height: 49px;
+
+  background-image: url("../img/sprite.png");
+  background-position: -5px -182px;
+}
+
+.result__genre {
+  margin: 0;
+  margin-top: 30px;
+}

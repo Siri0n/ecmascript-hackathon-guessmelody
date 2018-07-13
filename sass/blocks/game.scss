@@ -1,0 +1,146 @@
+/*
+ * Игровые экраны
+ */
+
+@import "../mixins/text";
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+// Шапка игровых экранов
+.game__header {
+  display: flex;
+
+  margin-bottom: 210px;
+  width: 100%;
+}
+
+.game__back {
+  position: relative;
+  margin-left: 50px;
+  z-index: 1;
+
+  width: 260px;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    left: -50px;
+    top: 25px;
+
+    width: 40px;
+    height: 40px;
+
+    background-image: url("../img/right-arrow.svg");
+    background-repeat: no-repeat;
+    background-size: 40px;
+
+    transform: rotate(180deg);
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active,
+  &:focus {
+    opacity: 0.6;
+  }
+}
+
+.game__mistakes {
+  display: flex;
+  justify-content: flex-end;
+
+  width: 260px;
+}
+
+// Общие стили игровых экранов
+.game__screen {
+  position: relative;
+  z-index: 1;
+
+  width: 440px;
+  text-align: center;
+}
+
+.game__title {
+  @include italic-title;
+
+  margin-bottom: 30px;
+}
+
+// Стили для игры на выбор жанра
+.game__answer {
+  width: 35px;
+  height: 49px;
+}
+
+.game__check {
+  display: block;
+
+  width: 35px;
+  height: 49px;
+
+  font-size: 0;
+
+  background-image: url("../img/sprite.png");
+  background-position: -5px -123px;
+
+  cursor: pointer;
+}
+
+.game__input:checked + .game__check {
+  background-position: -5px -5px;
+}
+
+.game__input:focus + .game__check {
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.game__submit {
+  @include italic-text;
+  margin-top: 30px;
+  padding: 5px 20px;
+
+  font-size: 24px;
+}
+
+// Стили для игры на выбор исполнителя
+.game__track {
+  margin-bottom: 120px;
+
+  width: 100%;
+  height: 55px;
+
+  text-align: left;
+
+  background-image: url("../img/player-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  animation: fadein 1000ms ease-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.game__artist {
+  display: flex;
+  justify-content: space-between;
+}

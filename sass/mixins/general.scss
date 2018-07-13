@@ -1,0 +1,6 @@
+// Нестилизованный список
+@mixin list-unstyled {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

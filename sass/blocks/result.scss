@@ -1,0 +1,88 @@
+/*
+ * Общие стили для экранов с результатами игры
+ */
+
+@import "../variables/colors";
+@import "../variables/layout";
+@import "../mixins/text";
+
+
+.result {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  width: 100%;
+  height: 100%;
+}
+
+.result__logo {
+  margin: 0;
+  margin-top: 220px;
+}
+
+.result__title {
+  @include italic-title;
+  text-align: center;
+
+  margin-top: 50px;
+}
+
+.result__total {
+  @include italic-title;
+  text-align: center;
+  font-size: 30px;
+
+  margin-top: 130px;
+  width: 500px;
+
+  &--fail {
+    margin-top: 170px;
+  }
+}
+
+.result__text {
+  margin: 0;
+
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.result__replay {
+  position: relative;
+  margin-top: 30px;
+  padding: 0;
+  padding-right: 40px;
+
+  color: $color-orange;
+  font-size: 30px;
+
+  border: none;
+  background: transparent;
+
+  &::after {
+    position: absolute;
+    content: "";
+
+    width: 27px;
+    height: 25px;
+
+    top: 50%;
+    right: 0;
+
+    background-image: url("../img/sprite.png");
+    background-position: -5px -357px;
+
+    transform: translateY(-50%);
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-hover;
+
+    &::after {
+      background-position: -5px -392px;
+    }
+  }
+}

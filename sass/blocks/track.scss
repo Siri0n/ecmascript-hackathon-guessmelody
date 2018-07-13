@@ -1,0 +1,50 @@
+/*
+ * Стили для трека на экране игры на выбор жанра
+ */
+
+.track {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.track__button {
+  width: 39px;
+  height: 53px;
+
+  border: none;
+  background-color: transparent;
+  background-image: url("../img/sprite.png");
+  cursor: pointer;
+
+  &--play {
+    background-position: -5px -241px;
+  }
+
+  &--pause {
+    background-position: -5px -294px;
+  }
+}
+
+.track__status {
+  width: 330px;
+  height: 55px;
+
+  background-image: url("../img/player-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  animation: fadein 1000ms ease-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

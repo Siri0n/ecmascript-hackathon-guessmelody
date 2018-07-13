@@ -1,0 +1,140 @@
+/*
+ * Каркас сайта
+ */
+
+@import "variables/colors";
+@import "variables/layout";
+@import "mixins/text";
+
+@font-face {
+  font-family: "Fira Sans";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+
+  src: url("../fonts/FiraSans-Light.woff2") format("woff2"),
+    url("../fonts/FiraSans-Light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+
+  src: url("../fonts/FiraSans-LightItalic.woff2") format("woff2"),
+    url("../fonts/FiraSans-LightItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+
+  src: url("../fonts/FiraSans-Medium.woff2") format("woff2"),
+    url("../fonts/FiraSans-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+
+  src: url("../fonts/FiraSans-MediumItalic.woff2") format("woff2"),
+    url("../fonts/FiraSans-MediumItalic.woff") format("woff");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  position: relative;
+  box-sizing: border-box;
+
+  height: 100%;
+  background: #1d121f linear-gradient(90deg, #1d121f, #270a17);
+}
+
+.content-box-component {
+  box-sizing: content-box;
+}
+
+body {
+  @include main-text;
+  color: $color-text-dark;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100%;
+  min-height: 1000px;
+
+  background: url("../img/vinyl.png") center no-repeat;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.app {
+  position: relative;
+  margin-bottom: 50px;
+  padding-top: 10px;
+
+  width: $layout-width;
+}
+
+.main {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  height: $layout-height;
+  width: $layout-width;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-2000px);
+  }
+
+  70% {
+    transform: translateY(30px);
+  }
+
+  90% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

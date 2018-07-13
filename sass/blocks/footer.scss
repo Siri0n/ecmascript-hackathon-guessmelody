@@ -1,0 +1,45 @@
+/*
+ * Стили для футера сайта
+ */
+
+@import "../variables/colors";
+@import "../variables/layout";
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+
+  width: $layout-width;
+}
+
+// Блок копирайта в футере сайта
+.copyright {
+  color: $color-beige;
+  white-space: nowrap;
+}
+
+.copyright__logo {
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.copyright__text {
+  margin: 0;
+  margin-top: 10px;
+}
+
+.copyright__link {
+  color: $color-orange;
+
+  &:hover,
+  &:focus {
+    color: $color-hover;
+  }
+}

@@ -1,0 +1,57 @@
+/*
+ * Стили для блока исполнителя в игре на выбор исполнителя
+ */
+
+@import "../variables/colors";
+
+.artist {
+  position: relative;
+  width: 134px;
+
+  color: $color-text-dark;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.artist__picture {
+  margin-bottom: 5px;
+
+  width: 134px;
+  height: 134px;
+
+  background-color: $color-beige;
+
+  border: solid 5px $color-text-dark;
+  border-radius: 134px;
+  cursor: pointer;
+}
+
+.artist:hover .artist__picture,
+.artist__input:focus + .artist__name .artist__picture {
+  border-color: $color-orange;
+}
+
+.artist:active .artist__picture {
+  border-color: $color-hover;
+}
+
+
+// Для экрана с результатом игры
+.artist__text {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.artist__time {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 134px;
+
+  color: #ffffff;
+  font-weight: 500;
+
+  transform: translateX(-50%);
+}

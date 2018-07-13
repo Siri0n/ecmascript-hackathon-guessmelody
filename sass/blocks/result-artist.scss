@@ -1,0 +1,28 @@
+/*
+ * Стили для экрана с результатами игры на выбор исполнителя
+ */
+
+// Переопределяю стили для заголовка и кнопки
+.result--artist {
+  .result__title {
+    margin-top: 20px;
+  }
+
+  .result__replay {
+    margin-top: 15px;
+  }
+
+  .result__total {
+    margin: 0;
+  }
+}
+
+// Стилизую блоки с исполнителями
+.result__answer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 500px;
+}

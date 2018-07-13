@@ -1,0 +1,64 @@
+/*
+ * Приветственный экран игры: правила игры и кнопка начала
+ */
+
+@import "../variables/colors";
+@import "../mixins/general";
+@import "../mixins/text";
+
+.welcome {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  width: 100%;
+  height: 100%;
+}
+
+.welcome__logo {
+  margin: 0;
+  margin-top: 220px;
+}
+
+.welcome__button {
+  position: absolute;
+  left: 350px;
+  top: 415px;
+
+  padding: 0;
+
+  width: 0;
+  height: 0;
+
+  background: transparent;
+  border-color: transparent;
+  border-left-color: $color-orange;
+  border-width: 70px 0 70px 100px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1.04);
+  }
+}
+
+.welcome__rules-title {
+  @include italic-title;
+
+  margin-top: 300px;
+}
+
+.welcome__text {
+  margin: 0;
+  margin-top: 10px;
+
+  text-align: center;
+}
+
+.welcome__rules-list {
+  @include list-unstyled;
+  text-align: center;
+}

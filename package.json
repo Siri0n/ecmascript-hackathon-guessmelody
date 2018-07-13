@@ -1,0 +1,34 @@
+{
+  "name": "GuessMelody",
+  "version": "5.0.0",
+  "private": true,
+  "description": "Личный проект «{{projectTitle}}» от HTML Academy",
+  "scripts": {
+    "editorconfig": "editorconfig-cli",
+    "stylelint": "stylelint 'sass/**/*.scss' --syntax scss",
+    "eslint": "eslint ./gulpfile.js js/",
+    "build": "gulp build",
+    "start": "gulp serve",
+    "test": "npm run eslint && npm run stylelint && gulp test"
+  },
+  "devDependencies": {
+    "autoprefixer": "8.5.1",
+    "browser-sync": "2.24.4",
+    "css-mqpacker": "6.0.2",
+    "del": "3.0.0",
+    "eslint": "4.19.1",
+    "eslint-config-htmlacademy": "0.5.x",
+    "gulp": "3.9.1",
+    "gulp-csso": "3.0.1",
+    "gulp-imagemin": "4.1.0",
+    "gulp-plumber": "1.2.0",
+    "gulp-postcss": "7.0.1",
+    "gulp-rename": "1.2.3",
+    "gulp-sass": "4.0.1",
+    "stylelint": "8.4.x",
+    "stylelint-config-htmlacademy": "0.1.x"
+  },
+  "engines": {
+    "node": "8"
+  }
+}

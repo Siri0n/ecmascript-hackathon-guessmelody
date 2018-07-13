@@ -1,0 +1,71 @@
+/*
+ * Стили для модальных окон
+ */
+
+@import "../variables/colors";
+@import "../mixins/text";
+
+.modal {
+  position: absolute;
+  z-index: 1;
+  top: 375px;
+
+  padding: 50px 20px;
+
+  text-align: center;
+  font-size: 18px;
+
+  background-color: $color-beige;
+  border: 5px solid rgba(0, 0, 0, 0.8);
+  border-radius: 50px;
+
+  animation: bounce 0.6s;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.modal__title {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.modal__text {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.modal__close {
+  position: absolute;
+  right: -30px;
+  top: -30px;
+
+  padding: 0;
+
+  width: 30px;
+  height: 30px;
+
+  background-color: transparent;
+  background-image: url("../img/icon-cross.svg");
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+
+  border: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    opacity: 0.6;
+  }
+}
+
+.modal__button {
+  @include bold-text;
+
+  &:not(:last-of-type) {
+    margin-right: 10px;
+  }
+}
