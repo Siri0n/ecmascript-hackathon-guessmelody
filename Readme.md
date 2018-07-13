@@ -1,7 +1,4 @@
-# Личный проект «{{projectTitle}}» [![Build status][travis-image]][travis-url]
-
-* Студент: [{{userName}}]({{userProfile}}).
-* Наставник: `Неизвестно`.
+# Хакатон проект «Угадай Мелодию» [![Build status][travis-image]][travis-url]
 
 ---
 
@@ -40,7 +37,7 @@ git clone SSH-адрес_вашего_форка
 
 Команда клонирует репозиторий на ваш компьютер и подготовит всё необходимое для старта работы.
 
-#### 4. Начинайте обучение!
+#### 4. Начинайте хакать и тонить!
 
 ---
 
@@ -48,5 +45,5 @@ git clone SSH-адрес_вашего_форка
 
 Репозиторий создан для обучения на интенсивном онлайн‑курсе «[Продвинутый JavaScript](https://htmlacademy.ru/intensive/ecmascript)» от [HTML Academy](https://htmlacademy.ru).
 
-[travis-image]: https://travis-ci.org/htmlacademy-ecmascript/{{userId}}-{{projectName}}.svg?branch=master
-[travis-url]: https://travis-ci.org/htmlacademy-ecmascript/{{userId}}-{{projectName}}
+[travis-image]: https://travis-ci.com/htmlacademy/ecmascript-hackathon-guessmelody.svg?branch=master
+[travis-url]: https://travis-ci.com/htmlacademy/ecmascript-hackathon-guessmelody
