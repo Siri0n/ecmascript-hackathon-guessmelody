@@ -3,4 +3,7 @@ env:
   browser: true
   commonjs: true
 
-extends: 'htmlacademy/es6'
+parserOptions:
+  sourceType: module
+
+extends: ['htmlacademy/es6', 'plugin:react/recommended']

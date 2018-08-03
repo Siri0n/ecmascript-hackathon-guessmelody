@@ -21,6 +21,20 @@
   margin-top: 220px;
 }
 
+.welcome__loader{
+  position: absolute;
+  left: 350px;
+  top: 415px;
+
+  padding: 0;
+
+  width: 0;
+  height: 0;
+
+  background: transparent;
+  border-color: transparent;
+}
+
 .welcome__button {
   position: absolute;
   left: 350px;

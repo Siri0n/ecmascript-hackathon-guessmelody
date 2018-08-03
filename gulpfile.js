@@ -2,6 +2,7 @@
 
 const del = require(`del`);
 const gulp = require(`gulp`);
+const sourcemaps = require(`gulp-sourcemaps`);
 const sass = require(`gulp-sass`);
 const plumber = require(`gulp-plumber`);
 const postcss = require(`gulp-postcss`);
@@ -11,6 +12,11 @@ const mqpacker = require(`css-mqpacker`);
 const minify = require(`gulp-csso`);
 const rename = require(`gulp-rename`);
 const imagemin = require(`gulp-imagemin`);
+const babel = require(`rollup-plugin-babel`);
+const resolve = require(`rollup-plugin-node-resolve`);
+const commonjs = require(`rollup-plugin-commonjs`);
+const replace = require(`rollup-plugin-replace`);
+const rollup = require(`gulp-better-rollup`);
 
 gulp.task(`style`, () => {
   return gulp.src(`sass/style.scss`).
@@ -36,9 +42,52 @@ gulp.task(`style`, () => {
 });
 
 gulp.task(`scripts`, () => {
-  return gulp.src(`js/**/*.js`).
-    pipe(plumber()).
-    pipe(gulp.dest(`build/js/`));
+  return gulp.src(`js/main.jsx`)
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(rollup({
+      treeshake: false,
+      cache: false,
+      plugins: [
+        replace({
+          "process.env.NODE_ENV": JSON.stringify('development')
+        }),
+        resolve({
+          jsnext: true,
+          main: true
+        }),
+        commonjs({
+          include: [
+            `node_modules/**`
+          ],
+          namedExports: {
+            "node_modules/react/index.js": [`Children`, `Component`, `Fragment`, `PropTypes`, `createElement`],
+            "node_modules/react-dom/index.js": [`render`]
+          }
+        }),
+        babel({
+          presets: [
+            [
+              `es2015`,
+              {modules:false}
+            ],
+            `es2016`,
+            `es2017`,
+            `react`,
+          ],
+          plugins: [
+            `external-helpers`,
+            `transform-object-rest-spread`
+          ],
+          exclude: 'node_modules/**',
+        })
+      ]
+    }, {
+      format: `iife`,
+    }))
+    .pipe(rename(`main.js`))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(`build/js`));
 });
 
 gulp.task(`imagemin`, [`copy`], () => {
@@ -89,7 +138,7 @@ gulp.task(`serve`, [`assemble`], () => {
       gulp.start(`copy-html`);
     }
   });
-  gulp.watch(`js/**/*.js`, [`js-watch`]);
+  gulp.watch(`js/**/*.{js,jsx}`, [`js-watch`]);
 });
 
 gulp.task(`assemble`, [`clean`], () => {

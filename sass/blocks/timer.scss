@@ -26,18 +26,18 @@
 
 .timer__value {
   width: 260px;
-
+  font-family: monospace; 
   font-size: 30px;
   color: $color-orange;
   text-align: center;
 }
 
 .timer__dots {
-  animation: blink 1000ms steps(1, end) infinite;
+  animation: blink 1000ms steps(1, end) 1;
 }
 
-.timer__value--finished {
-  animation: shrink 2000ms infinite;
+.timer__value--hurry {
+  animation: blink 1000ms steps(1, end) 1;
   color: red;
 
   .timer__dots {
