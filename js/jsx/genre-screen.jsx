@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import Player from "./player.jsx";
 
-class GenreScreen extends Component{
-  constructor(props){
+class GenreScreen extends Component {
+  constructor(props) {
     super(props);
     const answers = props.question.answers;
     this.audio = answers.map(() => React.createRef());
@@ -10,27 +10,26 @@ class GenreScreen extends Component{
       checked: answers.map(() => false)
     };
   }
-  onPlay(index){
+  onPlay(index) {
     this.audio.forEach((ref, i) => i !== index && ref.current.stop());
   }
-  onCheck(i){
+  onCheck(i) {
     this.setState((state) => {
       state.checked[i] = !state.checked[i];
       return state;
-    })
+    });
   }
-  onSubmit(e){
-    console.log("submit");
+  onSubmit(e) {
     e.preventDefault();
     const {checked} = this.state;
-    const {question: {genre, answers}, answer} = this.props;
-    if(!checked.some((flag) => flag)){
+    const {question: {genre, answers}} = this.props;
+    if (!checked.some((flag) => flag)) {
       return;
     }
     const isCorrect = checked.every((flag, i) => flag === (answers[i].genre === genre));
     this.props.answer(isCorrect);
   }
-  render(){
+  render() {
     const {answers, question, genre} = this.props.question;
     const debug = this.props.debug;
 
@@ -42,7 +41,7 @@ class GenreScreen extends Component{
           <div className="game__answer">
             <input className="game__input visually-hidden" type="checkbox" name="answer" value={i} id={`answer-${i}`}
               onClick={() => this.onCheck(i)} checked={this.state.checked[i]}/>
-            <label className="game__check" htmlFor={`answer-${i}`} 
+            <label className="game__check" htmlFor={`answer-${i}`}
               style={(debug && (genre === answerGenre)) ? {outline: `2px dashed green`} : {}}>Отметить</label>
           </div>
         </div>)}

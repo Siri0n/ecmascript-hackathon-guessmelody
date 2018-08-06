@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import Player from "./player.jsx";
 
-class ArtistScreen extends Component{
-  onClick(i){
+class ArtistScreen extends Component {
+  onClick(i) {
     const {question: {answers}, answer} = this.props;
     answer(answers[i].isCorrect);
   }
-  render(){
+  render() {
     const {answers, question, src} = this.props.question;
     const debug = this.props.debug;
 
@@ -19,7 +19,7 @@ class ArtistScreen extends Component{
             onClick={() => this.onClick(i)}/>
           <label className="artist__name" htmlFor={`answer-${i}`}>
             <img className="artist__picture" {...{width, height}} src={url} alt={title}
-              style={(debug && isCorrect) ? {outline: "2px dashed green"} : {}}/>
+              style={(debug && isCorrect) ? {outline: `2px dashed green`} : {}}/>
             {title}
           </label>
         </div>)}

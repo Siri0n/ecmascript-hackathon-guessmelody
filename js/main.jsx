@@ -7,12 +7,12 @@ import Root from "./root.jsx";
 import Actions from "./actions";
 const DEBUG = true;
 
-const main = document.querySelector(`.main`); 
+const main = document.querySelector(`.main`);
 
 ReactDOM.render(<Provider store={store}>
   <Root/>
 </Provider>, main);
 
-if(DEBUG){
+if (DEBUG) {
   store.dispatch(Actions.debug());
 }

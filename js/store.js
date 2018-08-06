@@ -6,7 +6,7 @@ import Immutable from "immutable";
 import loadQuestions from "./sagas/load-questions";
 import loadPlayerResults from "./sagas/load-player-results";
 import timer from "./sagas/timer";
-import {call, all} from "redux-saga/effects";
+import {call, all, put} from "redux-saga/effects";
 
 const GAME_LENGTH = 300;
 const MAX_MISTAKES = 2;
@@ -19,7 +19,8 @@ const initialGameData = Immutable.fromJS({
 });
 
 const initialState = Immutable.fromJS({
-  screen: "welcome",
+  screen: `welcome`,
+  modal: false,
   questions: null,
   gameData: initialGameData
 });
@@ -31,13 +32,12 @@ const reducer = handleActions({
   [Actions.play]: (state) => state.set(`screen`, `game`).set(`gameData`, initialGameData),
   [Actions.tick]: (state) => {
     state = state.updateIn([`gameData`, `timeLeft`], (time) => --time);
-    if(!state.getIn([`gameData`, `timeLeft`])){
+    if (!state.getIn([`gameData`, `timeLeft`])) {
       state = state.set(`screen`, `result`);
     }
     return state;
   },
   [Actions.answer]: (state, {payload: isCorrect}) => {
-    console.log("answer");
     let gameData = state.get(`gameData`);
     let time = gameData.get(`timeLeft`);
     let answer = new Immutable.Map({
@@ -45,12 +45,12 @@ const reducer = handleActions({
       time: gameData.get(`lastAnswerTime`) - time
     });
     gameData = gameData.set(`lastAnswerTime`, time);
-    gameData = gameData.update(`answers`, list => list.push(answer));
-    if(!isCorrect){
+    gameData = gameData.update(`answers`, (list) => list.push(answer));
+    if (!isCorrect) {
       gameData = gameData.update(`mistakes`, (n) => ++n);
     }
-    if((gameData.get(`mistakes`) > MAX_MISTAKES) || 
-      (gameData.get(`answers`).size === state.get(`questions`).size)){
+    if ((gameData.get(`mistakes`) > MAX_MISTAKES) ||
+      (gameData.get(`answers`).size === state.get(`questions`).size)) {
       state = state.set(`screen`, `result`);
     }
     state = state.set(`gameData`, gameData);
@@ -60,25 +60,28 @@ const reducer = handleActions({
     state = state.setIn([`gameData`, `playerResult`], playerResult);
     state = state.setIn([`gameData`, `results`], results);
     return state;
+  },
+  [Actions.showModal]: (state, {payload}) => {
+    return state.set(`modal`, payload);
   }
 }, initialState);
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = window.store = createStore(
-  reducer, 
-  applyMiddleware(sagaMiddleware)
+    reducer,
+    applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(function*(){
-  try{
+sagaMiddleware.run(function* () {
+  try {
     yield all([
       call(loadQuestions),
-      call(loadPlayerResults), 
+      call(loadPlayerResults),
       call(timer)
     ]);
-  }catch(e){
-    console.log(e);
+  } catch (e) {
+    yield put(Actions.error(e + ``));
   }
 });
 

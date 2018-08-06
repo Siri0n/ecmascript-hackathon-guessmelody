@@ -5,5 +5,11 @@ env:
 
 parserOptions:
   sourceType: module
+  ecmaFeatures: 
+    jsx: true
+    experimentalObjectRestSpread: true
 
 extends: ['htmlacademy/es6', 'plugin:react/recommended']
+
+rules:
+  react/prop-types: off
